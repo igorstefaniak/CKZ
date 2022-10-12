@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Igor Stefaniak">
+    <meta name="copyright" content="Igor Stefaniak">
+    <meta name="theme-color" content="#">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="./scripts/"></script>
+</head>
+<body>
+    <div id="title">Przelicznik jednostek miar temperatury</div>
+    <div id="container">
+
+        <select id="wartosci_z" onclick="blokada(this, 'z')">
+            <option value="c">Celsjusz [°C]</option>
+            <option value="f" disabled>Fahrenheit [°F]</option>
+            <option value="k">Kelvin [K]</option>
+            <option value="r">Rankine [°R]</option>
+            <option value="re">Réaumur [°Ré]</option>
+            <option value="ro">Rømer [°Rø]</option>
+            <option value="d">Delisle [°D]</option>
+            <option value="n">Newton [°N]</option>
+        </select><br>
+        
+        <select id="wartosci_do" onclick="blokada(this, 'do')">
+            <option value="c" disabled>Celsjusz [°C]</option>
+            <option value="f" selected>Fahrenheit [°F]</option>
+            <option value="k">Kelvin [K]</option>
+            <option value="r">Rankine [°R]</option>
+            <option value="re">Réaumur [°Ré]</option>
+            <option value="ro">Rømer [°Rø]</option>
+            <option value="d">Delisle [°D]</option>
+            <option value="n">Newton [°N]</option>
+        </select>
+
+        <input type="number" step="0.01" id="liczba">
+        <input type="number" step="0.01" id="wynik">
+
+
+        <button onclick="oblicz_temperature()">Oblicz</button>
+
+    </div>
+
+
+    <script>
+
+    function blokada(el, p){
+        if(p == 'z'){
+            switch(el.value){
+                    case 'c':
+                        document.querySelectorAll("#wartosci_do option").forEach(opt => {
+                            if (opt.value == "c") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'f':
+                        document.querySelectorAll("#wartosci_do option").forEach(opt => {
+                            if (opt.value == "f") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'k':
+                        document.querySelectorAll("#wartosci_do option").forEach(opt => {
+                            if (opt.value == "k") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'r':
+                        document.querySelectorAll("#wartosci_do option").forEach(opt => {
+                            if (opt.value == "r") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 're':
+                        document.querySelectorAll("#wartosci_do option").forEach(opt => {
+                            if (opt.value == "re") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'ro':
+                        document.querySelectorAll("#wartosci_do option").forEach(opt => {
+                            if (opt.value == "ro") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'd':
+                        document.querySelectorAll("#wartosci_do option").forEach(opt => {
+                            if (opt.value == "d") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'n':
+                        document.querySelectorAll("#wartosci_do option").forEach(opt => {
+                            if (opt.value == "n") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+
+            }
+        }
+
+        else if(p == 'do'){
+            switch(el.value){
+                    case 'c':
+                        document.querySelectorAll("#wartosci_z option").forEach(opt => {
+                            if (opt.value == "c") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'f':
+                        document.querySelectorAll("#wartosci_z option").forEach(opt => {
+                            if (opt.value == "f") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'k':
+                        document.querySelectorAll("#wartosci_z option").forEach(opt => {
+                            if (opt.value == "k") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'r':
+                        document.querySelectorAll("#wartosci_z option").forEach(opt => {
+                            if (opt.value == "r") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 're':
+                        document.querySelectorAll("#wartosci_z option").forEach(opt => {
+                            if (opt.value == "re") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'ro':
+                        document.querySelectorAll("#wartosci_z option").forEach(opt => {
+                            if (opt.value == "ro") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'd':
+                        document.querySelectorAll("#wartosci_z option").forEach(opt => {
+                            if (opt.value == "d") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+                    case 'n':
+                        document.querySelectorAll("#wartosci_z option").forEach(opt => {
+                            if (opt.value == "n") {
+                            opt.disabled = true;
+                        }
+                        else {
+                            opt.disabled = false;
+                        }
+                        });
+                        break;
+            }
+        }
+}
+    
+    function oblicz_temperature() {
+
+        var w_z = document.getElementById('wartosci_z').value;
+        var w_do = document.getElementById('wartosci_do').value;
+        var liczba = document.getElementById('liczba').value;
+        var wynik;
+
+/*         if(liczba == ""){
+            
+        } */
+                switch(true){
+                    
+                    case w_z == 'c' && w_do == 'f':
+                        wynik = Math.round((parseFloat(liczba) * 9/5 + 32) * 100) / 100;
+                        break;
+                    case w_z == 'c' && w_do == 'k':
+                        wynik = Math.round((parseFloat(liczba) + 273.15) * 100) / 100;
+                        break;
+                    case w_z == 'c' && w_do == 'r':
+                        wynik = Math.round(((parseFloat(liczba) + 273.15) * 9/5) * 100) / 100;
+                        break;
+                    case w_z == 'c' && w_do == 're':
+                        wynik = Math.round(((parseFloat(liczba) + 273.15) * 9/5) * 100) / 100;
+                        break;
+                    case w_z == 'c' && w_do == 'ro':
+                        wynik = Math.round(((parseFloat(liczba) + 273.15) * 9/5) * 100) / 100;
+                        break;
+                    case w_z == 'c' && w_do == 'd':
+                        wynik = Math.round(((parseFloat(liczba) + 273.15) * 9/5) * 100) / 100;
+                        break;
+                    case w_z == 'c' && w_do == 'n':
+                        wynik = Math.round(((parseFloat(liczba) + 273.15) * 9/5) * 100) / 100;
+                        break;
+                    
+            }
+
+            document.getElementById('wynik').value = wynik;
+    }
+
+
+    </script>
+
+</body>
+</html>

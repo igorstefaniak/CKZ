@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Igor Stefaniak">
+    <meta name="copyright" content="Igor Stefaniak">
+    <meta name="theme-color" content="#">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="./scripts/"></script>
+</head>
+<body>
+    <div id="title">Przelicznik jednostek miar temperatury</div>
+    <div id="container">
+        <label>Skala Celsjusza [°C]:</label><br>
+        <input type="number" step="0.01" onkeyup="oblicz_temperature('c')" id="celsjusz"><br>
+        <label>Skala Fahrenheita [°F]:</label><br>
+        <input type="number" step="0.01" onkeyup="oblicz_temperature('f')" id="fahrenheit"><br>
+        <label>Skala Kelvina [K]:</label><br>
+        <input type="number" step="0.01" onkeyup="oblicz_temperature('k')" id="kelvin"><br>
+        <label>Skala Rankine'a [°R]:</label><br>
+        <input type="number" step="0.01" onkeyup="oblicz_temperature('r')" id="rankine"><br>
+        <label>Skala Réaumur'a [°Ré]:</label><br>
+        <input type="number" step="0.01" onkeyup="oblicz_temperature('re')" id="reaumur"><br>
+        <label>Skala Rømer'a [°Rø]:</label><br>
+        <input type="number" step="0.01" onkeyup="oblicz_temperature('ro')" id="romer"><br>
+        <label>Skala Delisle [°D]:</label><br>
+        <input type="number" step="0.01" onkeyup="oblicz_temperature('d')" id="delisle"><br>
+        <label>Skala Newton'a [°N]:</label><br>
+        <input type="number" step="0.01" onkeyup="oblicz_temperature('n')" id="newton"><br>
+    </div>
+
+    <script>
+
+
+        function oblicz_temperature(skala) {
+
+            var c = document.getElementById('celsjusz').value;
+            var f = document.getElementById('fahrenheit').value;
+            var k = document.getElementById('kelvin').value;
+            var r = document.getElementById('rankine').value;
+            var re = document.getElementById('reaumur').value;
+            var ro = document.getElementById('romer').value;
+            var d = document.getElementById('delisle').value;
+            var n = document.getElementById('newton').value;
+
+            var edytowana = skala;
+
+            if(c == "" && edytowana == 'c' || f == "" && edytowana == 'f' || k == "" && edytowana == 'k' || r == "" && edytowana == 'r' || re == "" && edytowana == 're' || ro == "" && edytowana == 'ro' || d == "" && edytowana == 'd' || n == "" && edytowana == 'n') {
+                console.warn('Błąd nie podano liczby do przeliczeń');
+            }
+            else {
+
+                switch(skala){
+                    case 'c':
+                        document.getElementById('fahrenheit').value = Math.round((parseFloat(c) * 9/5 + 32) * 100) / 100;
+                        document.getElementById('kelvin').value = Math.round((parseFloat(c) + 273.15) * 100) / 100;
+                        document.getElementById('rankine').value = Math.round(((parseFloat(c) + 273.15) * 9/5) * 100) / 100;
+                        document.getElementById('reaumur').value = Math.round((parseFloat(c) * 4/5) * 100) / 100;
+                        document.getElementById('romer').value = Math.round((parseFloat(c) * 21/40 + 7.5) * 100) / 100;
+                        document.getElementById('delisle').value = Math.round(((100 - parseFloat(c)) * 3/2) * 100) / 100;
+                        document.getElementById('newton').value = Math.round((parseFloat(c) * 33/100 ) * 100) / 100;
+                    break;
+                    case 'f':
+                        document.getElementById('celsjusz').value = Math.round(((parseFloat(f) - 32) * 5/9 ) * 100) / 100;
+                        document.getElementById('kelvin').value = Math.round(((parseFloat(f) + 459.67) * 5/9) * 100) / 100;
+                        document.getElementById('rankine').value = Math.round((parseFloat(f) + 459.67 ) * 100) / 100;
+                        document.getElementById('reaumur').value = Math.round(((parseFloat(f) - 32) * 4/9 ) * 100) / 100;
+                        document.getElementById('romer').value = Math.round(((parseFloat(f) - 32) * 7/24 + 7.5) * 100) / 100;
+                        document.getElementById('delisle').value = Math.round(((212 - parseFloat(f)) * 5/6 ) * 100) / 100;
+                        document.getElementById('newton').value = Math.round(((parseFloat(f) - 32) * 11/60) * 100) / 100;
+                    break;
+                    case 'k':
+                        document.getElementById('celsjusz').value = Math.round((parseFloat(k) - 273.15) * 100) / 100;
+                        document.getElementById('fahrenheit').value = Math.round(((parseFloat(k) * 9/5 ) - 459.67) * 100) / 100;
+                        document.getElementById('rankine').value = Math.round((parseFloat(k) * 9/5) * 100) / 100;
+                        document.getElementById('reaumur').value = Math.round(((parseFloat(k) - 273.15) * 4/5) * 100) / 100;
+                        document.getElementById('romer').value = Math.round(((parseFloat(k) - 273.15) * 21/40 + 7.5)* 100) / 100;
+                        document.getElementById('delisle').value = Math.round(((373.15 - parseFloat(k)) * 3/2 ) * 100) / 100;
+                        document.getElementById('newton').value = Math.round(((parseFloat(k) - 273.15)* 33/100) * 100) / 100;
+                    break;
+                    case 'r':
+                        document.getElementById('celsjusz').value = Math.round(((parseFloat(r) - 491.67) * 5/9) * 100) / 100;
+                        document.getElementById('fahrenheit').value = Math.round((parseFloat(r) - 459.67) * 100) / 100;
+                        document.getElementById('kelvin').value = Math.round((parseFloat(r) * 5/9)  * 100) / 100;
+                        document.getElementById('reaumur').value = Math.round(((parseFloat(r) - 491.67) * 4/9 ) * 100) / 100;
+                        document.getElementById('romer').value = Math.round(((parseFloat(r) - 491.67) * 7/24 + 7.5) * 100) / 100;
+                        document.getElementById('delisle').value = Math.round(((671.67 - parseFloat(r))* 5/6) * 100) / 100;
+                        document.getElementById('newton').value = Math.round(((parseFloat(r)- 491.67)*11/60) * 100) / 100;
+                    break;
+                    case 're':
+                        document.getElementById('celsjusz').value = Math.round((parseFloat(re) * 5/4) * 100) / 100;
+                        document.getElementById('fahrenheit').value = Math.round(((parseFloat(re) * 9/4) + 32) * 100) / 100;
+                        document.getElementById('kelvin').value = Math.round((parseFloat(re) * 5/4 + 273.15) * 100) / 100;
+                        document.getElementById('rankine').value = Math.round(((parseFloat(re) * 9/4 ) + 491.67) * 100) / 100;
+                        document.getElementById('romer').value = Math.round((parseFloat(re) * 21/32 + 7.5) * 100) / 100;
+                        document.getElementById('delisle').value = Math.round(((80 - parseFloat(re))* 15/8) * 100) / 100;
+                        document.getElementById('newton').value = Math.round((parseFloat(re)*33/80) * 100) / 100;
+                    break;
+                    case 'ro':
+                        document.getElementById('celsjusz').value = Math.round(((parseFloat(ro)- 7.5) * 40/21) * 100) / 100;
+                        document.getElementById('fahrenheit').value = Math.round(((parseFloat(ro) - 7.5) * 24/7 + 32) * 100) / 100;
+                        document.getElementById('kelvin').value = Math.round(((parseFloat(ro) - 7.5) * 40/21 + 273.15) * 100) / 100;
+                        document.getElementById('rankine').value = Math.round(((parseFloat(ro) - 7.5) * 24/7 + 491.67) * 100) / 100;
+                        document.getElementById('reaumur').value = Math.round(((parseFloat(ro) - 7.5) * 32/21) * 100) / 100;
+                        document.getElementById('delisle').value = Math.round(((60 - parseFloat(ro)) * 20/7) * 100) / 100;
+                        document.getElementById('newton').value = Math.round(((parseFloat(ro) - 7.5)* 22/35) * 100) / 100;
+                    break;
+                    case 'd':
+                        document.getElementById('celsjusz').value = Math.round((100 - parseFloat(d) * 2/3) * 100) / 100;
+                        document.getElementById('fahrenheit').value = Math.round((212 - parseFloat(d) * 6/5) * 100) / 100;
+                        document.getElementById('kelvin').value = Math.round((373.15 - (parseFloat(d) * 2/3)) * 100) / 100;
+                        document.getElementById('rankine').value = Math.round((671.67 - parseFloat(d) * 6/5) * 100) / 100;
+                        document.getElementById('reaumur').value = Math.round((80 - parseFloat(d) * 8/15) * 100) / 100;
+                        document.getElementById('romer').value = Math.round((60 - parseFloat(d) * 7/20) * 100) / 100;
+                        document.getElementById('newton').value = Math.round((33 - parseFloat(d)* 11/50) * 100) / 100;
+                    break;
+                    case 'n':
+                        document.getElementById('celsjusz').value = Math.round((parseFloat(n) * 100/33) * 100) / 100;
+                        document.getElementById('fahrenheit').value = Math.round((parseFloat(n) * 60/11 + 32) * 100) / 100;
+                        document.getElementById('kelvin').value = Math.round((parseFloat(n) * 100/33 + 273.15) * 100) / 100;
+                        document.getElementById('rankine').value = Math.round(((parseFloat(n) * 60/11) + 491.67) * 100) / 100;
+                        document.getElementById('reaumur').value = Math.round((parseFloat(n)* 80/33) * 100) / 100;
+                        document.getElementById('romer').value = Math.round((parseFloat(n) * 35/22 + 7.5) * 100) / 100;
+                        document.getElementById('delisle').value = Math.round(((33 - parseFloat(n)) * 50/11) * 100) / 100;
+                    break;
+
+            }
+
+        }
+    }
+
+    </script>
+
+</body>
+</html>

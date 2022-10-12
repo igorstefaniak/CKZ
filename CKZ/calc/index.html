@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Igor Stefaniak">
+    <meta name="copyright" content="Igor Stefaniak">
+    <meta name="theme-color" content="#">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="./scripts/"></script>
+</head>
+<body>
+    <h1>Kalkulator</h1>
+    <p>Wprowadź liczby, wybierz działanie i kliknij <code>+ - * /</code> </p>
+    <div style="border: 1px solid black; padding: 10px; width: fit-content">a:
+        <input type="number" id="liczba1">b:
+        <input type="number" id="liczba2">
+        <button onclick="oblicz('+')">+</button>
+        <button onclick="oblicz('-')">-</button>
+        <button onclick="oblicz('*')">*</button>
+        <button onclick="oblicz('/')">/</button>
+        <input type="text" id="wynik" disabled style="background-color: white">
+    </div>
+    <script>
+        function oblicz(dzialanie) {
+            var liczba1 = document.getElementById('liczba1').value;
+            var liczba2 = document.getElementById('liczba2').value;
+            var wynik;
+
+            if(liczba1 == '' || liczba2 == '')
+            {
+                document.getElementById('wynik').value = 'Hej wpisz dane';
+            } 
+            else {
+                switch(dzialanie) {
+                        case '+':
+                            wynik = parseFloat(liczba1) + parseFloat(liczba2);
+                            break;
+                        case '-':
+                            wynik = liczba1 - liczba2;
+                            break;
+                        case '*':
+                            wynik = liczba1 * liczba2;
+                            break;
+                        case '/':
+                            if(liczba2 == 0)
+                                wynik = 'Zapamiętaj cholero, że nie dzieli się przez zero';
+                            else
+                                wynik = liczba1 / liczba2;
+                            break;
+                    }
+                    document.getElementById('wynik').value = wynik;
+            }
+        }
+    </script>
+
+</body>
+</html>
